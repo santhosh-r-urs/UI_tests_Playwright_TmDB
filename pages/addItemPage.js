@@ -3,6 +3,7 @@ export class AddItemPage {
     constructor(page) {
         this.page = page;
         this.addItemDropDown = this.page.getByRole('combobox', { name: 'Add Item' });
+    
        
         this.saveButton = this.page.getByRole('button', { name: 'Save' });
     }
@@ -15,5 +16,9 @@ export class AddItemPage {
 
     async clickSaveButton() {
         await this.saveButton.click();
+    }
+
+    async removeItemFromList(option) {
+        await this.page.getByRole('heading', { name: option }).locator('span').click();
     }
 }
