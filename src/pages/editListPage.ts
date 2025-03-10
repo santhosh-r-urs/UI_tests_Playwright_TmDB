@@ -1,6 +1,17 @@
+import { Page, Locator } from '@playwright/test';
 
 export class EditListPage {
-    constructor(page) {
+    public page: Page;
+    public nameInputfield: Locator;
+    public descriptionInputfield: Locator;
+    public publicListDropdown: Locator;
+    public showCommentsDropdown: Locator;
+    public sortByDropdown: Locator;
+    public saveButton: Locator;
+    public addOrEditItemLink: Locator;
+    public deleteListLink: Locator;
+
+    constructor(page: Page) {
         this.page = page;
         this.nameInputfield = this.page.getByRole('textbox', { name: 'Name' });
         this.descriptionInputfield = this.page.getByRole('textbox', { name: 'Description' });
@@ -12,27 +23,27 @@ export class EditListPage {
         this.deleteListLink = this.page.getByRole('link', { name: 'Delete List' });
     }
      
-    async selectPublicListOption(option) {
+    async selectPublicListOption(option: string): Promise<void> {
         await this.page.getByRole('option', { name: option }).click();
     }
 
-    async selectShowCommentsOption(option) {
+    async selectShowCommentsOption(option: string): Promise<void> {
         await this.page.getByRole('option', { name: option }).click();
     }   
 
-    async selectSortByOption(option) {
+    async selectSortByOption(option: string): Promise<void> {
         await this.page.getByRole('option', { name: option }).click();
     }   
 
-    async clickSaveButton() {
+    async clickSaveButton(): Promise<void> {
         await this.saveButton.click();
     }
 
-    async clickAddOrEditItemLink() {
+    async clickAddOrEditItemLink(): Promise<void> {
         await this.addOrEditItemLink.click();
     }
 
-    async clickDeleteListLink() {
+    async clickDeleteListLink(): Promise<void> {
         await this.deleteListLink.click();
     }
 }

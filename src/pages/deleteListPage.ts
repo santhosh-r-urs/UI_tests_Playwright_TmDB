@@ -1,19 +1,22 @@
-// await page.getByRole('button', { name: 'Delete' }).click();
-//   await page.getByRole('button', { name: 'Yes' }).click();
+import { Page, Locator } from '@playwright/test';
 
 
 export class DeleteListPage {
-    constructor(page) {
+    public page: Page;
+    public deleteButton: Locator;
+    public confirmDeletionButton: Locator;
+
+    constructor(page: Page) {
         this.page = page;
         this.deleteButton = page.getByRole('button', { name: 'Delete' });
         this.confirmDeletionButton = page.getByRole('button', { name: 'Yes' });
     }
      
-    async clickDeleteButton() {
+    async clickDeleteButton(): Promise<void> {
         await this.deleteButton.click();
     }
 
-    async clickConfirmDeletionButton() {
+    async clickConfirmDeletionButton(): Promise<void> {
         await this.confirmDeletionButton.click();
     }
 }

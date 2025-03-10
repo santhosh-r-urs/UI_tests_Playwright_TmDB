@@ -1,7 +1,10 @@
 import { test as setup } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 import path from 'path';
-import dotenv from 'dotenv/config';
+
+const userName = process.env.USERNAME || 'not provided in env file';
+const password = process.env.PASSWORD || 'not provided in env file';
+
 
 const authFile = path.join(
   process.cwd(),
@@ -9,13 +12,10 @@ const authFile = path.join(
 );
 
 setup('authenticate', async ({ page }) => {
- console.log(process.env.USERNAME);
- console.log(process.env.PASSWORD);
   const loginPage = new LoginPage(page);
   await loginPage.goToTmdbLoginPage()
-  await loginPage.login(process.env.USERNAME, process.env.PASSWORD);
+  await loginPage.login(userName, password);
 
   await page.waitForURL(`https://www.themoviedb.org/u/${process.env.USERNAME}`);
-  console.log(`Storing auth state in ${authFile}`);
   await page.context().storageState({ path: authFile });
 });

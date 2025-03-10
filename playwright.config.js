@@ -3,7 +3,7 @@ import dotenv from 'dotenv/config';
 
 
 export default defineConfig({
-    testDir: './tests',
+    testDir: './src/tests',
     timeout: 30000,
     retries: 0,
     use: {
@@ -23,7 +23,7 @@ export default defineConfig({
         {
             name: 'chromium',
             use: { browserName: 'chromium',
-                storageState: 'playwright/.auth/user1.json'
+                storageState: 'src/.playwright/.auth/user1.json'
              },
             dependencies: ['setup'],
         },
