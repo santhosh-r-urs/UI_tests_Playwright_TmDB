@@ -1,0 +1,25 @@
+{
+  "name": "ui_tests_playwright_tmdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santhosh-r-urs/UI_tests_Playwright_TmDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santhosh-r-urs/UI_tests_Playwright_TmDB/issues"
+  },
+  "homepage": "https://github.com/santhosh-r-urs/UI_tests_Playwright_TmDB#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "axios": "^1.8.2",
+    "dotenv": "^16.4.7"
+  }
+}
