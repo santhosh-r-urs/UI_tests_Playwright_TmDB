@@ -1,6 +1,16 @@
+import { Page, Locator } from '@playwright/test';
 
 export class CreateListPage {
-    constructor(page) {
+    public page: Page;
+    public nameInputfield: Locator;
+    public descriptionInputfield: Locator;
+    public publicListDropdown: Locator;
+    public showCommentsDropdown: Locator;
+    public sortByDropdown: Locator;
+    public continueButton: Locator;
+
+
+    constructor(page: Page) {
         this.page = page;
         this.nameInputfield = this.page.getByRole('textbox', { name: 'Name' });
         this.descriptionInputfield = this.page.getByRole('textbox', { name: 'Description' });
@@ -11,19 +21,19 @@ export class CreateListPage {
     }
     
      
-    async selectPublicListOption(option) {
+    async selectPublicListOption(option: string): Promise<void> {
         await this.page.getByRole('option', { name: option }).click();
     }
 
-    async selectShowCommentsOption(option) {
+    async selectShowCommentsOption(option: string): Promise<void> {
         await this.page.getByRole('option', { name: option }).click();
     }   
 
-    async selectSortByOption(option) {
+    async selectSortByOption(option: string): Promise<void> {
         await this.page.getByRole('option', { name: option }).click();
     }   
 
-    async clickContinueButton() {
+    async clickContinueButton(): Promise<void> {
         await this.continueButton.click();
     }
 }
